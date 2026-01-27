@@ -46,12 +46,7 @@ bunx skills add JonDotsoy/skills
 
 ### Usage Example
 
-Once installed, the skill can process your coaching session files:
-
-```bash
-# The skill will analyze session files from coaching/sessions/
-# and generate structured reports in coaching/reports/
-```
+Once installed, you can use this skill with AI assistants and automation tools to process coaching session files:
 
 **Example workflow:**
 
