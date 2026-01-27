@@ -107,10 +107,12 @@ You can modify the system prompt to change the report's tone. Edit the instructi
 ```markdown
 <!-- In coaching-reporter/AGENTS.md -->
 
-## Generar el reporte:
+3. **Generar el reporte**:
+   - Crea un reporte detallado basado en la información del archivo de sesión
+   - Utiliza el template "Template Reporte de Coaching" que se encuentra a continuación
    - El reporte debe ser claro, conciso y profesional
-   - **Tono de voz: [EMPÁTICO/DIRECTO/ANALÍTICO/MOTIVACIONAL]**
-   - Usa un lenguaje que [describe el estilo deseado]
+   - **Tono de voz: EMPÁTICO** (o DIRECTO/ANALÍTICO/MOTIVACIONAL)
+   - El reporte completo debe estar escrito en español
 ```
 
 #### Changing Output Language
