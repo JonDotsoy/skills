@@ -1,5 +1,5 @@
 ---
-name: coach-reporter
+name: coaching-reporter
 description: Generates detailed reports and analysis from coaching sessions. Use when analyzing coaching session files, tracking coachee progress, extracting insights from coaching notes, or creating structured reports for coaching development plans.
 ---
 
