@@ -2,6 +2,8 @@
 
 > Transform raw coaching session notes into professional, structured reports automatically
 
+English | **[Español](README-ES.md)**
+
 ## 📖 Overview
 
 **Coaching Report Skill** is an intelligent tool designed to streamline the documentation process for coaches, scrum masters, and team leaders. It solves the time-consuming challenge of converting unstructured coaching session notes, meeting transcripts, or audio recordings into comprehensive, actionable reports.
