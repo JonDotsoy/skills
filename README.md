@@ -63,6 +63,94 @@ Once installed, you can use this skill with AI assistants and automation tools t
 - ✅ Action items and next steps
 - 📅 Follow-up planning
 
+## ⚙️ Usage & Configuration
+
+Take full control of your coaching report generation! This section will help you understand the file workflow and customize the skill to match your exact needs.
+
+### 📁 File Workflow
+
+Understanding where your files go and where outputs are generated is key to an efficient workflow.
+
+> **📍 Input Location**: Place your coaching session files in `coaching/sessions/`  
+> Use the naming convention: `<coachee>-<YYYY-MM-DD>.md`
+
+> **📤 Output Location**: Generated reports are automatically saved in `coaching/reports/`  
+> Output format: `<coachee>-<YYYY-MM-DD>-report.md`
+
+**Example structure:**
+```
+your-project/
+├── coaching/
+│   ├── sessions/
+│   │   ├── john-2026-01-15.md          ← Your input files
+│   │   └── sarah-2026-01-20.md
+│   └── reports/
+│       ├── john-2026-01-15-report.md   ← Generated reports
+│       └── sarah-2026-01-20-report.md
+```
+
+### 🎨 Customization
+
+Want to adjust how reports are generated? You have full control! The skill's behavior is defined in the configuration files located in the `coaching-reporter/` directory.
+
+#### Adjusting Tone of Voice
+
+You can modify the system prompt to change the report's tone. Edit the instructions in `coaching-reporter/AGENTS.md` to adjust the style:
+
+**Available tone options:**
+- **Empático** (Empathetic): Warm, understanding, focuses on emotional support
+- **Directo** (Direct): Clear, concise, action-oriented
+- **Analítico** (Analytical): Data-driven, objective, detailed insights
+- **Motivacional** (Motivational): Inspiring, encouraging, growth-focused
+
+**Example customization:**
+```markdown
+<!-- In coaching-reporter/AGENTS.md -->
+
+## Generar el reporte:
+   - El reporte debe ser claro, conciso y profesional
+   - **Tono de voz: [EMPÁTICO/DIRECTO/ANALÍTICO/MOTIVACIONAL]**
+   - Usa un lenguaje que [describe el estilo deseado]
+```
+
+#### Changing Output Language
+
+By default, reports are generated in Spanish. To force a different language, modify the language instruction in `coaching-reporter/AGENTS.md`:
+
+```markdown
+<!-- Original (Spanish) -->
+- **El reporte completo debe estar escrito en español**
+
+<!-- Change to English -->
+- **The complete report must be written in English**
+
+<!-- Or Portuguese -->
+- **O relatório completo deve ser escrito em português**
+```
+
+**Pro tip:** You can also create language-specific templates by duplicating the skill directory and maintaining separate configurations for different teams or regions.
+
+### 💡 Pro Tips for Best Results
+
+#### Notion Export Recommendations
+
+When exporting your coaching sessions from Notion:
+
+> **✨ Recommended Format: Markdown & CSV**  
+> This preserves the document structure, including headers, lists, and formatting, making it easier for the skill to parse and generate accurate reports.
+
+**Export steps:**
+1. Open your coaching session page in Notion
+2. Click "⋯" (More actions) → Export
+3. Select **"Markdown & CSV"** as the export format
+4. Extract the downloaded file and move the `.md` file to `coaching/sessions/`
+
+#### Other Tips
+
+- **Consistent naming**: Stick to the `<coachee>-<date>.md` format for automatic processing
+- **Rich context**: Include as much detail as possible in your session notes—the more context, the better the report quality
+- **Template testing**: After customizing tone or language, test with a sample session to ensure the output meets your expectations
+
 ## 📄 License
 
 This project is distributed under the **MIT License**.
