@@ -24,10 +24,46 @@ Create a folder in the project root:
 ```
 your-skill-name/
 ├── SKILL.md          # Required: Main skill file
+├── README.md         # Required: User documentation
 └── resources/        # Optional: Additional files
     ├── templates/
     └── scripts/
 ```
+
+### README.md Format
+
+Each skill must include a README.md file with:
+
+```markdown
+# Skill Name
+
+Brief description of what the skill does.
+
+## Overview
+Detailed explanation of the skill's purpose and capabilities.
+
+## Installation
+```bash
+# Using npx
+npx skills add jondotsoy/skills --skill your-skill-name
+
+# Using bunx
+bunx skills add jondotsoy/skills --skill your-skill-name
+```
+
+## Usage
+Technical details on how to use the skill, file structure, and examples.
+
+## Documentation
+- [SKILL.md](SKILL.md) - Skill definition
+- [AGENTS.md](AGENTS.md) - Detailed agent instructions (if applicable)
+```
+
+The README.md is for human users and should focus on:
+- Technical requirements
+- Installation instructions
+- Usage examples
+- File structure expectations
 
 ### SKILL.md Format
 

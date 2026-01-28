@@ -44,12 +44,48 @@ Crea una carpeta en la raíz del proyecto con el nombre siguiendo la nomenclatur
 skills/
 ├── coaching-reporter/
 │   ├── SKILL.md          ← Archivo principal (requerido)
+│   ├── README.md         ← Documentación para usuarios (requerido)
 │   └── resources/        ← Recursos adicionales (opcional)
 │       ├── templates/
 │       └── scripts/
 ```
 
-### 3. Crear el Archivo SKILL.md
+### 3. Crear el Archivo README.md
+
+Cada skill debe incluir un README.md para usuarios humanos:
+
+```markdown
+# Nombre del Skill
+
+Breve descripción de qué hace el skill.
+
+## Overview
+Explicación detallada del propósito y capacidades del skill.
+
+## Installation
+```bash
+# Con npx
+npx skills add jondotsoy/skills --skill tu-skill-name
+
+# Con bunx
+bunx skills add jondotsoy/skills --skill tu-skill-name
+```
+
+## Usage
+Detalles técnicos sobre cómo usar el skill, estructura de archivos y ejemplos.
+
+## Documentation
+- [SKILL.md](SKILL.md) - Definición del skill
+- [AGENTS.md](AGENTS.md) - Instrucciones detalladas para agentes (si aplica)
+```
+
+El README.md debe enfocarse en:
+- Requisitos técnicos
+- Instrucciones de instalación
+- Ejemplos de uso
+- Estructura de archivos esperada
+
+### 4. Crear el Archivo SKILL.md
 
 El archivo `SKILL.md` es el corazón de tu skill. Debe seguir el formato [Agent Skills](https://skill.md) estándar:
 
@@ -80,7 +116,7 @@ Referencias a archivos adicionales si los hay.
 **Campos opcionales:**
 - `dependencies`: Paquetes de software requeridos
 
-### 4. Mejores Prácticas
+### 5. Mejores Prácticas
 
 - **Mantén el enfoque**: Un skill debe resolver una tarea específica y repetible
 - **Descripción clara**: El agente usa la descripción para decidir cuándo invocar tu skill
@@ -88,7 +124,7 @@ Referencias a archivos adicionales si los hay.
 - **Comienza simple**: Empieza con instrucciones básicas en Markdown antes de agregar scripts complejos
 - **Recursos adicionales**: Si tienes mucha información, crea archivos adicionales en una carpeta `resources/`
 
-### 5. Agregar Recursos Adicionales (Opcional)
+### 6. Agregar Recursos Adicionales (Opcional)
 
 Si tu skill necesita archivos de referencia, templates o scripts:
 
@@ -103,7 +139,7 @@ tu-skill/
 
 Referencia estos archivos en tu `SKILL.md` para que el agente sepa cuándo acceder a ellos.
 
-### 6. Actualizar el README.md
+### 7. Actualizar el README.md
 
 Agrega tu skill al archivo `README.md` del proyecto. Aunque no hay un formato establecido aún, incluye:
 
@@ -112,7 +148,7 @@ Agrega tu skill al archivo `README.md` del proyecto. Aunque no hay un formato es
 - Ejemplo de instalación
 - Casos de uso principales
 
-### 7. Publicar en la Rama Develop
+### 8. Publicar en la Rama Develop
 
 Una vez que tu skill esté listo:
 
@@ -124,7 +160,7 @@ git commit -m "feat: agregar skill [nombre-del-skill]"
 git push origin develop
 ```
 
-### 8. Compartir
+### 9. Compartir
 
 ¡Listo! Ahora puedes compartir con la comunidad que tu skill está disponible para ser descargado e instalado en sus proyectos.
 

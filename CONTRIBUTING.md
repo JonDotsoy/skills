@@ -44,12 +44,48 @@ Create a folder in the project root following the naming convention:
 skills/
 ├── coaching-reporter/
 │   ├── SKILL.md          ← Main file (required)
+│   ├── README.md         ← User documentation (required)
 │   └── resources/        ← Additional resources (optional)
 │       ├── templates/
 │       └── scripts/
 ```
 
-### 3. Create the SKILL.md File
+### 3. Create the README.md File
+
+Each skill must include a README.md for human users:
+
+```markdown
+# Skill Name
+
+Brief description of what the skill does.
+
+## Overview
+Detailed explanation of the skill's purpose and capabilities.
+
+## Installation
+```bash
+# Using npx
+npx skills add jondotsoy/skills --skill your-skill-name
+
+# Using bunx
+bunx skills add jondotsoy/skills --skill your-skill-name
+```
+
+## Usage
+Technical details on how to use the skill, file structure, and examples.
+
+## Documentation
+- [SKILL.md](SKILL.md) - Skill definition
+- [AGENTS.md](AGENTS.md) - Detailed agent instructions (if applicable)
+```
+
+The README.md should focus on:
+- Technical requirements
+- Installation instructions
+- Usage examples
+- File structure expectations
+
+### 4. Create the SKILL.md File
 
 The `SKILL.md` file is the heart of your skill. It must follow the [Agent Skills](https://skill.md) standard format:
 
@@ -80,7 +116,7 @@ References to additional files if any.
 **Optional fields:**
 - `dependencies`: Required software packages
 
-### 4. Best Practices
+### 5. Best Practices
 
 - **Stay focused**: A skill should solve a specific, repeatable task
 - **Clear description**: The agent uses the description to decide when to invoke your skill
@@ -88,7 +124,7 @@ References to additional files if any.
 - **Start simple**: Begin with basic Markdown instructions before adding complex scripts
 - **Additional resources**: If you have a lot of information, create additional files in a `resources/` folder
 
-### 5. Add Additional Resources (Optional)
+### 6. Add Additional Resources (Optional)
 
 If your skill needs reference files, templates, or scripts:
 
@@ -103,7 +139,7 @@ your-skill/
 
 Reference these files in your `SKILL.md` so the agent knows when to access them.
 
-### 6. Update README.md
+### 7. Update README.md
 
 Add your skill to the project's `README.md` file. Although there's no established format yet, include:
 
@@ -112,7 +148,7 @@ Add your skill to the project's `README.md` file. Although there's no establishe
 - Installation example
 - Main use cases
 
-### 7. Publish to the Develop Branch
+### 8. Publish to the Develop Branch
 
 Once your skill is ready:
 
@@ -124,7 +160,7 @@ git commit -m "feat: add skill [skill-name]"
 git push origin develop
 ```
 
-### 8. Share
+### 9. Share
 
 Done! Now you can share with the community that your skill is available to be downloaded and installed in their projects.
 
