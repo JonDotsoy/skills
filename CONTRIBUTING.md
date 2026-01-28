@@ -138,9 +138,22 @@ Before publishing, verify:
 4. ✅ All referenced files exist in the correct locations
 5. ✅ The skill works with example prompts
 
+## 🤖 Working with AI Agents
+
+This project includes an **AGENTS.md** file that provides instructions specifically for AI coding agents. If you're using an AI agent (like Claude, Cursor, or GitHub Copilot) to help create your skill, the agent will automatically read this file to understand the project structure and conventions.
+
+The AGENTS.md file contains:
+- Project overview and structure
+- Skill naming conventions
+- SKILL.md format requirements
+- Publishing workflow
+
+Most modern AI coding agents automatically detect and use AGENTS.md files to provide better assistance.
+
 ## 📚 Additional Resources
 
 - [Agent Skills Specification](https://skill.md)
+- [AGENTS.md Format](https://agents.md)
 - [Official Skills Documentation](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)
 - [Skills Examples](https://github.com/anthropics/skills/tree/main/skills)
 - [Best Practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices)

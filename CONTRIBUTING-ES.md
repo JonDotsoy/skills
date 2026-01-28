@@ -138,9 +138,22 @@ Antes de publicar, verifica:
 4. ✅ Todos los archivos referenciados existen en las ubicaciones correctas
 5. ✅ El skill funciona con prompts de ejemplo
 
+## 🤖 Trabajando con Agentes de IA
+
+Este proyecto incluye un archivo **AGENTS.md** que proporciona instrucciones específicamente para agentes de IA. Si estás usando un agente de IA (como Claude, Cursor o GitHub Copilot) para ayudarte a crear tu skill, el agente leerá automáticamente este archivo para entender la estructura y convenciones del proyecto.
+
+El archivo AGENTS.md contiene:
+- Descripción general del proyecto y estructura
+- Convenciones de nomenclatura de skills
+- Requisitos del formato SKILL.md
+- Flujo de trabajo de publicación
+
+La mayoría de los agentes de IA modernos detectan y usan automáticamente los archivos AGENTS.md para proporcionar mejor asistencia.
+
 ## 📚 Recursos Adicionales
 
 - [Especificación Agent Skills](https://skill.md)
+- [Formato AGENTS.md](https://agents.md)
 - [Documentación oficial de Skills](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)
 - [Ejemplos de Skills](https://github.com/anthropics/skills/tree/main/skills)
 - [Mejores prácticas](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices)
