@@ -16,10 +16,10 @@ The Runbook Generator helps teams create standardized documentation for reproduc
 
 ```bash
 # Using npx
-npx skills add jondotsoy/skills --skill runbook-generator
+npx skills add jondotsoy/skills --skill "Runbook Generator"
 
 # Using bunx
-bunx skills add jondotsoy/skills --skill runbook-generator
+bunx skills add jondotsoy/skills --skill "Runbook Generator"
 ```
 
 ## Usage

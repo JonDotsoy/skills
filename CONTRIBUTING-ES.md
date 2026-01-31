@@ -9,11 +9,15 @@
 Los usuarios pueden instalar skills de este repositorio usando:
 
 ```bash
-# Con npx
-npx skills add jondotsoy/skills --skill coaching-reporter
+# Instalar todos los skills
+npx skills add jondotsoy/skills
+
+# Instalar un skill específico usando el nombre del skill
+npx skills add jondotsoy/skills --skill "Coaching Reporter"
+npx skills add jondotsoy/skills --skill "Runbook Generator"
 
 # Con bunx
-bunx skills add jondotsoy/skills --skill coaching-reporter
+bunx skills add jondotsoy/skills --skill "Runbook Executor"
 ```
 
 ## ✨ Cómo Contribuir con un Nuevo Skill
@@ -68,10 +72,10 @@ Explicación detallada del propósito y capacidades del skill.
 ## Installation
 ```bash
 # Con npx
-npx skills add jondotsoy/skills --skill tu-skill-name
+npx skills add jondotsoy/skills --skill "Coaching Reporter"
 
 # Con bunx
-bunx skills add jondotsoy/skills --skill tu-skill-name
+bunx skills add jondotsoy/skills --skill "Coaching Reporter"
 ```
 
 ## Usage

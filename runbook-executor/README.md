@@ -24,10 +24,10 @@ This creates an audit trail of runbook executions, making it easy to:
 
 ```bash
 # Using npx
-npx skills add jondotsoy/skills --skill runbook-executor
+npx skills add jondotsoy/skills --skill "Runbook Executor"
 
 # Using bunx
-bunx skills add jondotsoy/skills --skill runbook-executor
+bunx skills add jondotsoy/skills --skill "Runbook Executor"
 ```
 
 ## Usage

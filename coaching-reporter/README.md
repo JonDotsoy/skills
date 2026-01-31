@@ -17,10 +17,10 @@ This skill analyzes coaching session files and generates comprehensive reports t
 
 ```bash
 # Using npx
-npx skills add jondotsoy/skills --skill coaching-reporter
+npx skills add jondotsoy/skills --skill "Coaching Reporter"
 
 # Using bunx
-bunx skills add jondotsoy/skills --skill coaching-reporter
+bunx skills add jondotsoy/skills --skill "Coaching Reporter"
 ```
 
 ## Usage
