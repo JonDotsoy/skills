@@ -73,6 +73,10 @@ The SKILL.md file must follow the Agent Skills standard format:
 ---
 name: Skill Name
 description: Clear description of what the skill does (max 200 chars)
+license: MIT
+metadata:
+  author: Jonathan Delgado <hi@jon.soy> (https://jon.soy)
+  version: "1.0"
 dependencies: package>=version  # Optional
 ---
 
@@ -89,9 +93,13 @@ Input and expected output examples.
 References to additional files if needed.
 ```
 
-Required metadata:
+Required metadata in frontmatter:
 - `name`: Friendly name (max 64 characters)
 - `description`: When to use this skill (max 200 characters)
+- `license`: License type (use MIT)
+- `metadata.author`: Author information in format: Name <email> (url)
+- `metadata.version`: Version string (e.g., "1.0")
+- `dependencies`: Optional package dependencies
 
 ### Publishing Process
 

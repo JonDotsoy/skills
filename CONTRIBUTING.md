@@ -27,9 +27,10 @@ The skill name must follow the pattern: **`[role/entity]-[function]`**
 
 **Examples:**
 - `coaching-reporter` → Coaching + Reporter (generates reports)
+- `runbook-generator` → Runbook + Generator (creates runbooks)
+- `runbook-executor` → Runbook + Executor (executes runbooks)
 - `devops-argocd-cli` → DevOps + ArgoCD CLI (command-line tools)
 - `frontend-component-generator` → Frontend + Component Generator
-- `data-analysis-pipeline` → Data Analysis + Pipeline
 
 **Format:**
 - Use lowercase
@@ -41,14 +42,16 @@ The skill name must follow the pattern: **`[role/entity]-[function]`**
 Create a folder in the project root following the naming convention:
 
 ```
-skills/
-├── coaching-reporter/
-│   ├── SKILL.md          ← Main file (required)
-│   ├── README.md         ← User documentation (required)
-│   └── resources/        ← Additional resources (optional)
-│       ├── templates/
-│       └── scripts/
+your-skill-name/
+├── SKILL.md          ← Main file (required)
+├── README.md         ← User documentation (required)
+├── AGENTS.md         ← Detailed agent instructions (optional)
+├── assets/           ← Templates and resources (optional)
+│   └── templates/
+└── scripts/          ← Executable scripts (optional)
 ```
+
+**Note:** Use `assets/` for templates and static resources, and `scripts/` for executable shell scripts or automation tools.
 
 ### 3. Create the README.md File
 
@@ -93,6 +96,10 @@ The `SKILL.md` file is the heart of your skill. It must follow the [Agent Skills
 ---
 name: Skill Name
 description: Clear description of what the skill does and when to use it (max 200 chars)
+license: MIT
+metadata:
+  author: Jonathan Delgado <hi@jon.soy> (https://jon.soy)
+  version: "1.0"
 dependencies: python>=3.8, pandas>=1.5.0  # Optional
 ---
 
@@ -112,6 +119,9 @@ References to additional files if any.
 **Required fields in YAML frontmatter:**
 - `name`: Friendly skill name (max 64 characters)
 - `description`: Clear description so the agent knows when to invoke the skill (max 200 characters)
+- `license`: License type (use MIT)
+- `metadata.author`: Author information in format: Name <email> (url)
+- `metadata.version`: Version string (e.g., "1.0")
 
 **Optional fields:**
 - `dependencies`: Required software packages
@@ -131,22 +141,48 @@ If your skill needs reference files, templates, or scripts:
 ```
 your-skill/
 ├── SKILL.md
-└── resources/
-    ├── REFERENCE.md      ← Supplementary information
-    ├── templates/        ← Templates
-    └── scripts/          ← Executable scripts
+├── AGENTS.md             ← Detailed instructions (optional)
+├── assets/
+│   └── templates/        ← Templates and static resources
+└── scripts/              ← Executable scripts
+    └── setup.sh
 ```
 
-Reference these files in your `SKILL.md` so the agent knows when to access them.
+**Guidelines:**
+- Use `assets/` for templates, configuration files, and static resources
+- Use `scripts/` for executable shell scripts and automation tools
+- Create an `AGENTS.md` file for detailed agent instructions if SKILL.md becomes too long
+- Reference these files in your `SKILL.md` so the agent knows when to access them
 
-### 7. Update README.md
+### 7. Update README.md Files
 
-Add your skill to the project's `README.md` file. Although there's no established format yet, include:
+Add your skill to both `README.md` and `README-ES.md` files in the "Available Skills" section:
 
-- Skill name
-- Brief description
-- Installation example
-- Main use cases
+**In README.md:**
+```markdown
+### 📝 Your Skill Name
+Brief description of what the skill does.
+
+**Perfect for:**
+- Use case 1
+- Use case 2
+- Use case 3
+
+[View Documentation →](your-skill-name/README.md)
+```
+
+**In README-ES.md:**
+```markdown
+### 📝 Tu Skill Name
+Breve descripción de lo que hace el skill.
+
+**Perfecto para:**
+- Caso de uso 1
+- Caso de uso 2
+- Caso de uso 3
+
+[Ver Documentación →](your-skill-name/README.md)
+```
 
 ### 8. Publish to the Develop Branch
 

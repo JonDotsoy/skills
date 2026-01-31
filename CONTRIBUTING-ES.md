@@ -27,9 +27,10 @@ El nombre del skill debe seguir el patrón: **`[rol/entidad]-[función]`**
 
 **Ejemplos:**
 - `coaching-reporter` → Coaching + Reporter (genera reportería)
+- `runbook-generator` → Runbook + Generator (crea runbooks)
+- `runbook-executor` → Runbook + Executor (ejecuta runbooks)
 - `devops-argocd-cli` → DevOps + ArgoCD CLI (herramientas de línea de comandos)
 - `frontend-component-generator` → Frontend + Component Generator
-- `data-analysis-pipeline` → Data Analysis + Pipeline
 
 **Formato:**
 - Usa minúsculas
@@ -41,14 +42,16 @@ El nombre del skill debe seguir el patrón: **`[rol/entidad]-[función]`**
 Crea una carpeta en la raíz del proyecto con el nombre siguiendo la nomenclatura:
 
 ```
-skills/
-├── coaching-reporter/
-│   ├── SKILL.md          ← Archivo principal (requerido)
-│   ├── README.md         ← Documentación para usuarios (requerido)
-│   └── resources/        ← Recursos adicionales (opcional)
-│       ├── templates/
-│       └── scripts/
+tu-skill-name/
+├── SKILL.md          ← Archivo principal (requerido)
+├── README.md         ← Documentación para usuarios (requerido)
+├── AGENTS.md         ← Instrucciones detalladas para agentes (opcional)
+├── assets/           ← Templates y recursos (opcional)
+│   └── templates/
+└── scripts/          ← Scripts ejecutables (opcional)
 ```
+
+**Nota:** Usa `assets/` para templates y recursos estáticos, y `scripts/` para scripts ejecutables de shell o herramientas de automatización.
 
 ### 3. Crear el Archivo README.md
 
@@ -93,6 +96,10 @@ El archivo `SKILL.md` es el corazón de tu skill. Debe seguir el formato [Agent 
 ---
 name: Nombre del Skill
 description: Descripción clara de qué hace el skill y cuándo usarlo (máx. 200 caracteres)
+license: MIT
+metadata:
+  author: Jonathan Delgado <hi@jon.soy> (https://jon.soy)
+  version: "1.0"
 dependencies: python>=3.8, pandas>=1.5.0  # Opcional
 ---
 
@@ -112,6 +119,9 @@ Referencias a archivos adicionales si los hay.
 **Campos requeridos en el frontmatter YAML:**
 - `name`: Nombre amigable del skill (máx. 64 caracteres)
 - `description`: Descripción clara para que el agente sepa cuándo invocar el skill (máx. 200 caracteres)
+- `license`: Tipo de licencia (usar MIT)
+- `metadata.author`: Información del autor en formato: Nombre <email> (url)
+- `metadata.version`: String de versión (ej., "1.0")
 
 **Campos opcionales:**
 - `dependencies`: Paquetes de software requeridos
@@ -131,22 +141,48 @@ Si tu skill necesita archivos de referencia, templates o scripts:
 ```
 tu-skill/
 ├── SKILL.md
-└── resources/
-    ├── REFERENCE.md      ← Información suplementaria
-    ├── templates/        ← Plantillas
-    └── scripts/          ← Scripts ejecutables
+├── AGENTS.md             ← Instrucciones detalladas (opcional)
+├── assets/
+│   └── templates/        ← Templates y recursos estáticos
+└── scripts/              ← Scripts ejecutables
+    └── setup.sh
 ```
 
-Referencia estos archivos en tu `SKILL.md` para que el agente sepa cuándo acceder a ellos.
+**Guías:**
+- Usa `assets/` para templates, archivos de configuración y recursos estáticos
+- Usa `scripts/` para scripts ejecutables de shell y herramientas de automatización
+- Crea un archivo `AGENTS.md` para instrucciones detalladas si SKILL.md se vuelve muy largo
+- Referencia estos archivos en tu `SKILL.md` para que el agente sepa cuándo acceder a ellos
 
-### 7. Actualizar el README.md
+### 7. Actualizar los Archivos README.md
 
-Agrega tu skill al archivo `README.md` del proyecto. Aunque no hay un formato establecido aún, incluye:
+Agrega tu skill a los archivos `README.md` y `README-ES.md` en la sección "Available Skills" / "Skills Disponibles":
 
-- Nombre del skill
-- Breve descripción
-- Ejemplo de instalación
-- Casos de uso principales
+**En README.md:**
+```markdown
+### 📝 Your Skill Name
+Brief description of what the skill does.
+
+**Perfect for:**
+- Use case 1
+- Use case 2
+- Use case 3
+
+[View Documentation →](your-skill-name/README.md)
+```
+
+**En README-ES.md:**
+```markdown
+### 📝 Tu Skill Name
+Breve descripción de lo que hace el skill.
+
+**Perfecto para:**
+- Caso de uso 1
+- Caso de uso 2
+- Caso de uso 3
+
+[Ver Documentación →](your-skill-name/README.md)
+```
 
 ### 8. Publicar en la Rama Develop
 
