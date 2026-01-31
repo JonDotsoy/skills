@@ -56,14 +56,14 @@ npx skills add jondotsoy/skills
 
 **Instalar un skill específico:**
 ```bash
-npx skills add jondotsoy/skills --skill "Coaching Reporter"
-npx skills add jondotsoy/skills --skill "Runbook Generator"
-npx skills add jondotsoy/skills --skill "Runbook Executor"
+npx skills add jondotsoy/skills --skill coaching-reporter
+npx skills add jondotsoy/skills --skill runbook-generator
+npx skills add jondotsoy/skills --skill runbook-executor
 ```
 
 **Usando Bun:**
 ```bash
-bunx skills add jondotsoy/skills --skill "Coaching Reporter"
+bunx skills add jondotsoy/skills --skill coaching-reporter
 ```
 
 ## 📚 Documentación

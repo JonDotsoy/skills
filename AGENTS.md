@@ -71,7 +71,7 @@ The SKILL.md file must follow the Agent Skills standard format:
 
 ```markdown
 ---
-name: Skill Name
+name: skill-name
 description: Clear description of what the skill does (max 200 chars)
 license: MIT
 metadata:
@@ -94,7 +94,7 @@ References to additional files if needed.
 ```
 
 Required metadata in frontmatter:
-- `name`: Friendly name (max 64 characters)
+- `name`: Skill folder name using kebab-case (e.g., "coaching-reporter", "runbook-generator")
 - `description`: When to use this skill (max 200 characters)
 - `license`: License type (use MIT)
 - `metadata.author`: Author information in format: Name <email> (url)

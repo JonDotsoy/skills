@@ -1,5 +1,5 @@
 ---
-name: Runbook Generator
+name: runbook-generator
 description: Creates structured runbooks to document reproducible scenarios for APIs, UX flows, and technical procedures
 license: MIT
 metadata:

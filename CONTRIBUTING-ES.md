@@ -12,12 +12,12 @@ Los usuarios pueden instalar skills de este repositorio usando:
 # Instalar todos los skills
 npx skills add jondotsoy/skills
 
-# Instalar un skill específico usando el nombre del skill
-npx skills add jondotsoy/skills --skill "Coaching Reporter"
-npx skills add jondotsoy/skills --skill "Runbook Generator"
+# Instalar un skill específico usando el nombre de carpeta
+npx skills add jondotsoy/skills --skill coaching-reporter
+npx skills add jondotsoy/skills --skill runbook-generator
 
 # Con bunx
-bunx skills add jondotsoy/skills --skill "Runbook Executor"
+bunx skills add jondotsoy/skills --skill runbook-executor
 ```
 
 ## ✨ Cómo Contribuir con un Nuevo Skill
@@ -72,10 +72,10 @@ Explicación detallada del propósito y capacidades del skill.
 ## Installation
 ```bash
 # Con npx
-npx skills add jondotsoy/skills --skill "Coaching Reporter"
+npx skills add jondotsoy/skills --skill tu-skill-name
 
 # Con bunx
-bunx skills add jondotsoy/skills --skill "Coaching Reporter"
+bunx skills add jondotsoy/skills --skill tu-skill-name
 ```
 
 ## Usage
@@ -98,7 +98,7 @@ El archivo `SKILL.md` es el corazón de tu skill. Debe seguir el formato [Agent 
 
 ```markdown
 ---
-name: Nombre del Skill
+name: tu-skill-name
 description: Descripción clara de qué hace el skill y cuándo usarlo (máx. 200 caracteres)
 license: MIT
 metadata:
@@ -121,7 +121,7 @@ Referencias a archivos adicionales si los hay.
 ```
 
 **Campos requeridos en el frontmatter YAML:**
-- `name`: Nombre amigable del skill (máx. 64 caracteres)
+- `name`: Nombre de carpeta del skill usando kebab-case (ej., "coaching-reporter", "runbook-generator")
 - `description`: Descripción clara para que el agente sepa cuándo invocar el skill (máx. 200 caracteres)
 - `license`: Tipo de licencia (usar MIT)
 - `metadata.author`: Información del autor en formato: Nombre <email> (url)

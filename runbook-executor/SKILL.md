@@ -1,5 +1,5 @@
 ---
-name: Runbook Executor
+name: runbook-executor
 description: Executes runbooks and generates timestamped evidence documentation of the execution results
 license: MIT
 metadata:

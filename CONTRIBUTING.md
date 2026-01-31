@@ -12,12 +12,12 @@ Users can install skills from this repository using:
 # Install all skills
 npx skills add jondotsoy/skills
 
-# Install a specific skill using the skill name
-npx skills add jondotsoy/skills --skill "Coaching Reporter"
-npx skills add jondotsoy/skills --skill "Runbook Generator"
+# Install a specific skill using the folder name
+npx skills add jondotsoy/skills --skill coaching-reporter
+npx skills add jondotsoy/skills --skill runbook-generator
 
 # With bunx
-bunx skills add jondotsoy/skills --skill "Runbook Executor"
+bunx skills add jondotsoy/skills --skill runbook-executor
 ```
 
 ## ✨ How to Contribute a New Skill
@@ -72,10 +72,10 @@ Detailed explanation of the skill's purpose and capabilities.
 ## Installation
 ```bash
 # Using npx
-npx skills add jondotsoy/skills --skill "Coaching Reporter"
+npx skills add jondotsoy/skills --skill your-skill-name
 
 # Using bunx
-bunx skills add jondotsoy/skills --skill "Coaching Reporter"
+bunx skills add jondotsoy/skills --skill your-skill-name
 ```
 
 ## Usage
@@ -98,7 +98,7 @@ The `SKILL.md` file is the heart of your skill. It must follow the [Agent Skills
 
 ```markdown
 ---
-name: Skill Name
+name: your-skill-name
 description: Clear description of what the skill does and when to use it (max 200 chars)
 license: MIT
 metadata:
@@ -121,7 +121,7 @@ References to additional files if any.
 ```
 
 **Required fields in YAML frontmatter:**
-- `name`: Friendly skill name (max 64 characters)
+- `name`: Skill folder name using kebab-case (e.g., "coaching-reporter", "runbook-generator")
 - `description`: Clear description so the agent knows when to invoke the skill (max 200 characters)
 - `license`: License type (use MIT)
 - `metadata.author`: Author information in format: Name <email> (url)

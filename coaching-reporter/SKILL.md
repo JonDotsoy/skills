@@ -1,6 +1,10 @@
 ---
-name: Coaching Reporter
+name: coaching-reporter
 description: Generates detailed reports and analysis from coaching sessions. Use when analyzing coaching session files, tracking coachee progress, extracting insights from coaching notes, or creating structured reports for coaching development plans.
+license: MIT
+metadata:
+  author: Jonathan Delgado <hi@jon.soy> (https://jon.soy)
+  version: "1.0"
 ---
 
 ## Overview
