@@ -47,9 +47,9 @@ When asked to execute a runbook and document evidence:
 
 When asked to review past executions:
 
-1. Navigate to `<runbook-path>/evidence/`
-2. List available execution timestamps
-3. Open the relevant `result.md` file
+1. Run the list script: `./runbook-executor/scripts/list-evidence.sh <runbook-path>`
+2. Review the list of executions ordered by date (newest first)
+3. Open the relevant `result.md` file from the desired timestamp
 
 # Examples
 
@@ -63,7 +63,13 @@ Execute an API testing runbook:
 ./runbook-executor/scripts/create-evidence.sh runbooks/api-payment-flow
 ```
 
+List all evidence executions for a runbook (newest first):
+```bash
+./runbook-executor/scripts/list-evidence.sh runbooks/user-login-flow
+```
+
 # Resources
 
 - Template: `assets/evidence-template.md`
 - Creation script: `scripts/create-evidence.sh`
+- List script: `scripts/list-evidence.sh`

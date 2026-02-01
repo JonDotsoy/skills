@@ -45,6 +45,36 @@ This creates a timestamped evidence file at:
 ./runbooks/user-login-flow/evidence/2026-01-31-14-30/result.md
 ```
 
+### Listing Evidence Executions
+
+View all evidence executions for a runbook, ordered by date (newest first):
+
+```bash
+./runbook-executor/scripts/list-evidence.sh runbooks/user-login-flow
+```
+
+Output example:
+```
+Evidence executions for: runbooks/user-login-flow
+Total executions: 3
+
+Listing (newest first):
+----------------------------------------
+📋 2026-01-31 14:30
+   Path: runbooks/user-login-flow/evidence/2026-01-31-14-30
+   Status: Success
+   Attachments: 2 file(s)
+
+📋 2026-01-31 09:15
+   Path: runbooks/user-login-flow/evidence/2026-01-31-09-15
+   Status: Failed
+   Attachments: 1 file(s)
+
+📋 2026-01-30 16:45
+   Path: runbooks/user-login-flow/evidence/2026-01-30-16-45
+   Status: Success
+```
+
 ### Evidence File Structure
 
 Each evidence file includes:
@@ -98,3 +128,4 @@ Each evidence file includes:
 - [SKILL.md](SKILL.md) - Skill definition for AI agents
 - [Template](assets/evidence-template.md) - Base template for evidence files
 - [Creation Script](scripts/create-evidence.sh) - Script to generate evidence files
+- [List Script](scripts/list-evidence.sh) - Script to list evidence executions by date
