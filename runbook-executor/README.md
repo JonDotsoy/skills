@@ -114,6 +114,49 @@ Each evidence file includes:
             └── result.md
 ```
 
+## HTTP Request Scripts
+
+For runbooks that include HTTP API calls, use **httpie** scripts to automate requests and save responses:
+
+### Creating HTTP Scripts
+
+Create scripts in your runbook's `scripts/` directory:
+
+```bash
+./runbooks/api-test/
+├── STEPS.md
+├── scripts/
+│   ├── login.httpie.sh
+│   └── responses/
+│       └── 1738500000-login.httpie.http
+└── evidence/
+```
+
+### Example httpie Script
+
+```bash
+#!/bin/bash
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+RESPONSES_DIR="$SCRIPT_DIR/responses"
+TIMESTAMP=$(date +%s)
+
+mkdir -p "$RESPONSES_DIR"
+
+http POST https://api.example.com/login \
+    username=test@example.com \
+    password=secret123 \
+    -v 2>&1 | tee "$RESPONSES_DIR/${TIMESTAMP}-login.httpie.http"
+```
+
+### Response File Naming
+
+Use Unix timestamps for unique filenames:
+```
+<timestamp>-<endpoint>.httpie.http
+```
+
+An example script is included at `scripts/login.httpie.sh`.
+
 ## Use Cases
 
 - Documenting API integration testing

@@ -68,8 +68,106 @@ List all evidence executions for a runbook (newest first):
 ./runbook-executor/scripts/list-evidence.sh runbooks/user-login-flow
 ```
 
+# HTTP Requests in Runbooks
+
+When a runbook contains HTTP requests that can be executed locally, create scripts using **httpie** to automate the requests and save responses for evidence.
+
+## Structure for HTTP Scripts
+
+```
+<runbook-path>/
+├── STEPS.md
+├── scripts/
+│   ├── login.httpie.sh
+│   ├── get-user.httpie.sh
+│   └── responses/
+│       ├── 1738500000-login.httpie.http
+│       └── 1738500100-get-user.httpie.http
+└── evidence/
+```
+
+## Script Requirements
+
+Each httpie script should:
+
+1. Use httpie with `-v` flag for verbose output
+2. Save responses to `scripts/responses/` directory
+3. Use Unix timestamp in the filename
+4. Include clear documentation
+
+## Naming Convention
+
+Response files follow this pattern:
+```
+<unix-timestamp>-<endpoint-name>.httpie.http
+```
+
+Examples:
+- `1738500000-login.httpie.http`
+- `1738500100-get-users.httpie.http`
+- `1738500200-create-order.httpie.http`
+
+## Example Script
+
+```bash
+#!/bin/bash
+# Login API request using httpie
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+RESPONSES_DIR="$SCRIPT_DIR/responses"
+TIMESTAMP=$(date +%s)
+
+mkdir -p "$RESPONSES_DIR"
+
+http POST https://api.example.com/login \
+    username=test@example.com \
+    password=secret123 \
+    -v 2>&1 | tee "$RESPONSES_DIR/${TIMESTAMP}-login.httpie.http"
+
+echo "Response saved to: $RESPONSES_DIR/${TIMESTAMP}-login.httpie.http"
+```
+
+## Common httpie Commands
+
+```bash
+# GET request
+http GET https://api.example.com/users -v
+
+# POST with JSON body
+http POST https://api.example.com/login username=user password=pass -v
+
+# POST with custom headers
+http POST https://api.example.com/data \
+    Authorization:"Bearer token123" \
+    -v
+
+# PUT request
+http PUT https://api.example.com/users/1 name="Updated Name" -v
+
+# DELETE request
+http DELETE https://api.example.com/users/1 -v
+```
+
+## STEPS.md Integration
+
+When documenting HTTP steps in `STEPS.md`, reference the scripts:
+
+```markdown
+## Step 3: Authenticate with API
+
+Execute the login script to authenticate:
+
+\`\`\`bash
+./scripts/login.httpie.sh
+\`\`\`
+
+Expected response: HTTP 200 with JWT token in response body.
+Response saved to: `scripts/responses/<timestamp>-login.httpie.http`
+```
+
 # Resources
 
 - Template: `assets/evidence-template.md`
 - Creation script: `scripts/create-evidence.sh`
 - List script: `scripts/list-evidence.sh`
+- Example httpie script: `scripts/login.httpie.sh`

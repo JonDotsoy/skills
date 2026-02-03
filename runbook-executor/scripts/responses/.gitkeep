@@ -1,0 +1,7 @@
+# This directory stores HTTP response files from httpie scripts
+#
+# Naming convention: <unix-timestamp>-<endpoint-name>.httpie.http
+# Example: 1738500000-login.httpie.http
+#
+# These files contain the full HTTP request/response including headers,
+# useful for debugging and evidence documentation.
