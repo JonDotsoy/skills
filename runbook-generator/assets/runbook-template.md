@@ -37,7 +37,9 @@
 
 ## HTTP Scripts (if applicable)
 
-If this runbook contains HTTP requests, create scripts in the `scripts/` directory:
+If this runbook contains HTTP requests, create scripts in the `scripts/` directory.
+
+> **Important**: All scripts must be executed under supervision. Review each script before execution and verify the target endpoints are correct for your environment.
 
 ```
 ./scripts/

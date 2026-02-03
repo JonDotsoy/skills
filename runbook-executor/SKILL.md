@@ -72,6 +72,8 @@ List all evidence executions for a runbook (newest first):
 
 When a runbook contains HTTP requests that can be executed locally, create scripts using **httpie** to automate the requests and save responses for evidence.
 
+> **Important**: All scripts must be executed under supervision. Review each script before execution and verify the target endpoints are correct for your environment.
+
 ## Structure for HTTP Scripts
 
 ```
