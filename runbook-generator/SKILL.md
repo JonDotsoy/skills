@@ -4,7 +4,7 @@ description: Creates structured runbooks to document reproducible scenarios for 
 license: MIT
 metadata:
   author: Jonathan Delgado <hi@jon.soy> (https://jon.soy)
-  version: "1.0"
+  version: "1.1"
 ---
 
 # Overview

@@ -4,7 +4,7 @@ description: Executes runbooks and generates timestamped evidence documentation 
 license: MIT
 metadata:
   author: Jonathan Delgado <hi@jon.soy> (https://jon.soy)
-  version: "1.0"
+  version: "1.1"
 ---
 
 # Overview
