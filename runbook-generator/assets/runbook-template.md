@@ -43,29 +43,52 @@ If this runbook contains HTTP requests, create scripts in the `scripts/` directo
 
 ```
 ./scripts/
+├── activation.sh              # Environment setup and script-http alias
+├── .env                       # Secrets (git-ignored)
+├── .env.example               # Example configuration
 ├── [endpoint-name].httpie.sh
 └── responses/
     └── [timestamp]-[endpoint-name].httpie.http
 ```
 
+### Activation Script
+
+Before running HTTP scripts, activate the environment:
+
+```bash
+source ./scripts/activation.sh
+```
+
+This loads `.env` secrets and provides the `script-http` function.
+
 ### Example Script
 
 ```bash
 #!/bin/bash
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-RESPONSES_DIR="$SCRIPT_DIR/responses"
-TIMESTAMP=$(date +%s)
+# Usage: source ./activation.sh && ./endpoint.httpie.sh
 
-mkdir -p "$RESPONSES_DIR"
+set -e
 
-http POST https://api.example.com/endpoint \
-    key=value \
-    -v 2>&1 | tee "$RESPONSES_DIR/${TIMESTAMP}-endpoint.httpie.http"
+BASE_URL="${API_BASE_URL:-https://api.example.com}"
+
+script-http POST "$BASE_URL/endpoint" \
+    key=value
 ```
 
 ## Steps to Reproduce
 
-### Step 1: [Action Name]
+### Step 1: Activate Environment (if using HTTP scripts)
+
+**Action**: Load environment variables and aliases
+
+**Command**:
+```bash
+source ./scripts/activation.sh
+```
+
+---
+
+### Step 2: [Action Name]
 
 **Action**: [Describe what to do]
 
@@ -73,11 +96,6 @@ http POST https://api.example.com/endpoint \
 ```bash
 # Using httpie script (recommended)
 ./scripts/[endpoint-name].httpie.sh
-
-# Or direct httpie command
-http POST https://api.example.com/endpoint \
-  key=value \
-  -v
 ```
 
 **Expected Result**: [What should happen]

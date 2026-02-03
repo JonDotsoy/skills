@@ -80,6 +80,9 @@ When a runbook contains HTTP requests that can be executed locally, create scrip
 <runbook-path>/
 ├── STEPS.md
 ├── scripts/
+│   ├── activation.sh        # Environment setup and aliases
+│   ├── .env                  # Secrets (git-ignored)
+│   ├── .env.example          # Example configuration
 │   ├── login.httpie.sh
 │   ├── get-user.httpie.sh
 │   └── responses/
@@ -88,14 +91,46 @@ When a runbook contains HTTP requests that can be executed locally, create scrip
 └── evidence/
 ```
 
+## Activation Script
+
+The `activation.sh` script sets up the environment for HTTP scripts:
+
+1. Loads environment variables from `.env` file (for secrets)
+2. Creates the `script-http` function that wraps httpie and saves responses automatically
+
+### Usage
+
+```bash
+# First, activate the environment
+source ./scripts/activation.sh
+
+# Then run your scripts
+./scripts/login.httpie.sh
+```
+
+### Configuration with .env
+
+Create a `.env` file for secrets (copy from `.env.example`):
+
+```bash
+cp .env.example .env
+```
+
+Example `.env`:
+```
+API_BASE_URL=https://api.example.com
+API_USERNAME=your-username
+API_PASSWORD=your-password
+API_TOKEN=your-bearer-token
+```
+
 ## Script Requirements
 
 Each httpie script should:
 
-1. Use httpie with `-v` flag for verbose output
-2. Save responses to `scripts/responses/` directory
-3. Use Unix timestamp in the filename
-4. Include clear documentation
+1. Use `script-http` instead of `http` directly
+2. Use environment variables for secrets and configuration
+3. Include a comment indicating to run `source ./activation.sh` first
 
 ## Naming Convention
 
@@ -114,19 +149,15 @@ Examples:
 ```bash
 #!/bin/bash
 # Login API request using httpie
+# Usage: source ./activation.sh && ./login.httpie.sh
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-RESPONSES_DIR="$SCRIPT_DIR/responses"
-TIMESTAMP=$(date +%s)
+set -e
 
-mkdir -p "$RESPONSES_DIR"
+BASE_URL="${API_BASE_URL:-https://api.example.com}"
 
-http POST https://api.example.com/login \
-    username=test@example.com \
-    password=secret123 \
-    -v 2>&1 | tee "$RESPONSES_DIR/${TIMESTAMP}-login.httpie.http"
-
-echo "Response saved to: $RESPONSES_DIR/${TIMESTAMP}-login.httpie.http"
+script-http POST "$BASE_URL/login" \
+    username="${API_USERNAME:-test@example.com}" \
+    password="${API_PASSWORD:-secret123}"
 ```
 
 ## Common httpie Commands
@@ -152,10 +183,16 @@ http DELETE https://api.example.com/users/1 -v
 
 ## STEPS.md Integration
 
-When documenting HTTP steps in `STEPS.md`, reference the scripts:
+When documenting HTTP steps in `STEPS.md`, reference the activation and scripts:
 
 ```markdown
-## Step 3: Authenticate with API
+## Step 1: Activate environment
+
+\`\`\`bash
+source ./scripts/activation.sh
+\`\`\`
+
+## Step 2: Authenticate with API
 
 Execute the login script to authenticate:
 
