@@ -35,6 +35,32 @@
   - [List of services that must be running]
   - [External dependencies that must be available]
 
+## HTTP Scripts (if applicable)
+
+If this runbook contains HTTP requests, create scripts in the `scripts/` directory:
+
+```
+./scripts/
+├── [endpoint-name].httpie.sh
+└── responses/
+    └── [timestamp]-[endpoint-name].httpie.http
+```
+
+### Example Script
+
+```bash
+#!/bin/bash
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+RESPONSES_DIR="$SCRIPT_DIR/responses"
+TIMESTAMP=$(date +%s)
+
+mkdir -p "$RESPONSES_DIR"
+
+http POST https://api.example.com/endpoint \
+    key=value \
+    -v 2>&1 | tee "$RESPONSES_DIR/${TIMESTAMP}-endpoint.httpie.http"
+```
+
 ## Steps to Reproduce
 
 ### Step 1: [Action Name]
@@ -43,10 +69,13 @@
 
 **Command/Interaction**:
 ```bash
-# Example command
-curl -X POST https://api.example.com/endpoint \
-  -H "Content-Type: application/json" \
-  -d '{"key": "value"}'
+# Using httpie script (recommended)
+./scripts/[endpoint-name].httpie.sh
+
+# Or direct httpie command
+http POST https://api.example.com/endpoint \
+  key=value \
+  -v
 ```
 
 **Expected Result**: [What should happen]
