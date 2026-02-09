@@ -43,6 +43,18 @@ Ejecuta runbooks y genera documentación de evidencia con timestamp de los resul
 
 [Ver Documentación →](runbook-executor/README.md)
 
+### 🔀 PR Creator
+Automatiza la creación de pull requests en GitHub en modo draft siguiendo el formato Conventional Commits.
+
+**Perfecto para:**
+- Mantener formato consistente de PRs en equipos
+- Extraer IDs de tickets automáticamente del nombre de las ramas
+- Generar descripciones estructuradas de PRs con secciones apropiadas
+- Ahorrar tiempo en tareas repetitivas de creación de PRs
+- Asegurar que los PRs sigan mejores prácticas y convenciones
+
+[Ver Documentación →](pr-creator/README.md)
+
 ## 🚀 Inicio Rápido
 
 ### Instalación
@@ -59,6 +71,7 @@ npx skills add jondotsoy/skills
 npx skills add jondotsoy/skills --skill coaching-reporter
 npx skills add jondotsoy/skills --skill runbook-generator
 npx skills add jondotsoy/skills --skill runbook-executor
+npx skills add jondotsoy/skills --skill pr-creator
 ```
 
 **Usando Bun:**
