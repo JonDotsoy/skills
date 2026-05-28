@@ -55,6 +55,17 @@ Automate GitHub pull request creation in draft mode following Conventional Commi
 
 [View Documentation →](pr-creator/README.md)
 
+### 🗂️ Issue Workspace
+Set up a complete, isolated development environment around a single issue: downloads the ticket, creates a dedicated branch, wires up memory tracking, and prepares a clean PR worktree.
+
+**Perfect for:**
+- Starting work on a GitHub issue with a structured environment
+- Keeping project notes, decisions, and context organized per ticket
+- Preparing a clean pull request branch without polluting memory files
+- Teams that want consistent issue-to-PR workflows
+
+[View Documentation →](issue-workspace/README.md)
+
 ## 🚀 Quick Start
 
 ### Installation
@@ -72,6 +83,7 @@ npx skills add jondotsoy/skills --skill coaching-reporter
 npx skills add jondotsoy/skills --skill runbook-generator
 npx skills add jondotsoy/skills --skill runbook-executor
 npx skills add jondotsoy/skills --skill pr-creator
+npx skills add jondotsoy/skills --skill issue-workspace
 ```
 
 **Using Bun:**

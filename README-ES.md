@@ -55,6 +55,17 @@ Automatiza la creación de pull requests en GitHub en modo draft siguiendo el fo
 
 [Ver Documentación →](pr-creator/README.md)
 
+### 🗂️ Issue Workspace
+Configura un entorno de desarrollo completo y aislado alrededor de un issue: descarga el ticket, crea una rama dedicada, activa el rastreo de memorias y prepara un worktree limpio para el pull request.
+
+**Perfecto para:**
+- Iniciar el trabajo en un issue de GitHub con un entorno estructurado
+- Mantener notas, decisiones y contexto organizados por ticket
+- Preparar una rama de pull request limpia sin mezclar archivos de memoria
+- Equipos que quieren flujos consistentes desde el issue hasta el PR
+
+[Ver Documentación →](issue-workspace/README.md)
+
 ## 🚀 Inicio Rápido
 
 ### Instalación
@@ -72,6 +83,7 @@ npx skills add jondotsoy/skills --skill coaching-reporter
 npx skills add jondotsoy/skills --skill runbook-generator
 npx skills add jondotsoy/skills --skill runbook-executor
 npx skills add jondotsoy/skills --skill pr-creator
+npx skills add jondotsoy/skills --skill issue-workspace
 ```
 
 **Usando Bun:**
