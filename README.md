@@ -55,6 +55,28 @@ Automate GitHub pull request creation in draft mode following Conventional Commi
 
 [View Documentation →](pr-creator/README.md)
 
+### 💬 Commit Message
+Generate consistent commit messages following the Conventional Commits standard by reading the staged diff and recent commit history.
+
+**Perfect for:**
+- Writing well-formatted commit messages without memorizing the spec
+- Keeping commit style consistent across the team
+- Describing the "why" behind changes, not just the "what"
+- Validating messages before they are committed
+
+[View Documentation →](commit-message/README.md)
+
+### 🗺️ Project Roadmap
+Create and manage a project ROADMAP at the user story level, tracking milestones (`HU-*`), their descriptions, and dependencies without mixing in implementation details.
+
+**Perfect for:**
+- Planning features and milestones with clear dependency order
+- Visualizing the roadmap as a Mermaid dependency diagram
+- Keeping planning separate from implementation details
+- Sharing a structured roadmap with stakeholders
+
+[View Documentation →](project-roadmap/README.md)
+
 ## 🚀 Quick Start
 
 ### Installation
@@ -72,6 +94,8 @@ npx skills add jondotsoy/skills --skill coaching-reporter
 npx skills add jondotsoy/skills --skill runbook-generator
 npx skills add jondotsoy/skills --skill runbook-executor
 npx skills add jondotsoy/skills --skill pr-creator
+npx skills add jondotsoy/skills --skill commit-message
+npx skills add jondotsoy/skills --skill project-roadmap
 ```
 
 **Using Bun:**

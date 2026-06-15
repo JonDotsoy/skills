@@ -55,6 +55,28 @@ Automatiza la creación de pull requests en GitHub en modo draft siguiendo el fo
 
 [Ver Documentación →](pr-creator/README.md)
 
+### 💬 Commit Message
+Genera mensajes de commit consistentes siguiendo el estándar Conventional Commits leyendo el diff staged y el historial de commits recientes.
+
+**Perfecto para:**
+- Escribir mensajes de commit bien formateados sin memorizar la especificación
+- Mantener un estilo de commits consistente en el equipo
+- Describir el "por qué" de los cambios, no solo el "qué"
+- Validar mensajes antes de que sean commiteados
+
+[Ver Documentación →](commit-message/README.md)
+
+### 🗺️ Project Roadmap
+Crea y gestiona un ROADMAP de proyecto a nivel de historia de usuario, rastreando hitos (`HU-*`), sus descripciones y dependencias sin mezclar detalles de implementación.
+
+**Perfecto para:**
+- Planificar funcionalidades e hitos con un orden claro de dependencias
+- Visualizar el roadmap como un diagrama de dependencias Mermaid
+- Mantener la planificación separada de los detalles de implementación
+- Compartir un roadmap estructurado con stakeholders
+
+[Ver Documentación →](project-roadmap/README.md)
+
 ## 🚀 Inicio Rápido
 
 ### Instalación
@@ -72,6 +94,8 @@ npx skills add jondotsoy/skills --skill coaching-reporter
 npx skills add jondotsoy/skills --skill runbook-generator
 npx skills add jondotsoy/skills --skill runbook-executor
 npx skills add jondotsoy/skills --skill pr-creator
+npx skills add jondotsoy/skills --skill commit-message
+npx skills add jondotsoy/skills --skill project-roadmap
 ```
 
 **Usando Bun:**
