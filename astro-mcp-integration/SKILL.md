@@ -18,8 +18,9 @@ The user must describe in natural language:
 - The **tools** they need (name, what they do, their inputs)
 - The **prompts** they need (name, description, args)
 - The **resources** they need (URI, mimeType, what they return)
+- The **docs path** where the MCP documentation file should be generated (default: `docs/MCP.md`)
 
-If the user does not specify any of these, assume empty and continue.
+If the user does not specify any of these, assume empty / use the default and continue.
 
 ---
 
@@ -270,7 +271,68 @@ wrangler d1 migrations apply <DATABASE_NAME>           # production
 
 ---
 
-## Step 5 — Update `astro.config.mjs`
+## Step 5 — Generate documentation file
+
+Create (or replace) the MCP documentation file. The default path is `docs/MCP.md`; use the
+path the user specified if they provided one. Create parent directories if they don't exist.
+
+The file must document everything a developer needs to understand and connect to the MCP server:
+
+```markdown
+# MCP Server
+
+Brief description of what this MCP server exposes.
+
+## Endpoint
+
+`POST /mcp` — JSON-RPC over HTTP (Bearer token required)
+
+## Authentication
+
+Describe the token validation method (JWT / introspection / local table), the issuer URL,
+required scopes, and where to obtain a token.
+
+## Tools
+
+### tool_name
+Description of what this tool does.
+
+**Input:**
+| Parameter | Type | Description |
+|---|---|---|
+| param | string | What it is |
+
+**Output:** Description of what the tool returns.
+
+(repeat for each tool)
+
+## Prompts
+
+### prompt_name
+Description. Arguments: `arg` — what it means.
+
+(repeat for each prompt)
+
+## Resources
+
+### `myapp://resource-uri`
+Description. MIME type: `text/plain`.
+
+(repeat for each resource)
+
+## Integration example
+
+Quick example of calling the MCP server with a Bearer token.
+```
+
+**Important when generating the real file:**
+- Fill every section with the actual tools, prompts, resources, and OAuth details from this session.
+- Keep descriptions concise — this file is read by developers, not by the LLM at runtime.
+- If the parent directory does not exist, create it before writing the file.
+
+---
+
+## Step 6 — Update `astro.config.mjs`
 
 If the project uses OAuth (cross-origin requests from OAuth clients), verify that
 `checkOrigin` is disabled in Astro (or handled manually with CORS):
@@ -289,7 +351,44 @@ If `checkOrigin` is already `false`, do not change anything.
 
 ---
 
-## Step 6 — Final summary to the user
+## Step 7 — Save definitions to project memory
+
+Append an `## MCP Server` section to the project's `CLAUDE.md` file (create it at the
+project root if it doesn't exist) so these definitions persist across sessions and future
+agents can update the MCP server without asking the user again.
+
+The section must capture every decision made during this session:
+
+```markdown
+## MCP Server
+
+<!-- managed by astro-mcp-integration skill — update this section when the MCP changes -->
+
+- **Handler:** `src/pages/mcp.ts`
+- **Docs:** `docs/MCP.md`  <!-- or the path the user specified -->
+- **OAuth issuer:** `<ISSUER_URL>`
+- **Token validation:** JWT / introspection / local table  <!-- whichever was chosen -->
+- **User claim:** `<CLAIM_NAME>`
+- **Scopes:** `<SCOPE_LIST>`
+
+### Tools
+- `tool_name` — one-line description
+
+### Prompts
+- `prompt_name` — one-line description
+
+### Resources
+- `myapp://resource-uri` — one-line description
+```
+
+Rules:
+- If a `## MCP Server` section already exists in `CLAUDE.md`, replace it entirely.
+- Do not touch any other section of `CLAUDE.md`.
+- Use the actual values from the session — no placeholders.
+
+---
+
+## Step 8 — Final summary to the user
 
 When done, show the user:
 
@@ -303,7 +402,8 @@ When done, show the user:
 4. **Registered tools** (name and brief description).
 5. **Registered prompts**.
 6. **Registered resources**.
-7. **Pending steps** the user must complete manually (add real DB logic, update secrets, run migrations, etc.).
+7. **Documentation** — path of the generated MCP doc file.
+8. **Pending steps** the user must complete manually (add real DB logic, update secrets, run migrations, etc.).
 
 ---
 
