@@ -77,6 +77,17 @@ Create and manage a project ROADMAP at the user story level, tracking milestones
 
 [View Documentation →](project-roadmap/README.md)
 
+### 🔌 Astro MCP Integration
+Integrate an MCP server into an existing Astro project — generates the `/mcp` endpoint with your tools, prompts, and resources, protected by OAuth 2.0 Bearer token authentication.
+
+**Perfect for:**
+- Exposing project data and actions to AI clients via the Model Context Protocol
+- Adding a standards-compliant MCP endpoint to any Astro SSR project
+- Configuring OAuth 2.0 Bearer token authentication (JWT, introspection, or local table)
+- Generating developer reference documentation for the MCP API automatically
+
+[View Documentation →](astro-mcp-integration/README.md)
+
 ## 🚀 Quick Start
 
 ### Installation
@@ -96,6 +107,7 @@ npx skills add jondotsoy/skills --skill runbook-executor
 npx skills add jondotsoy/skills --skill pr-creator
 npx skills add jondotsoy/skills --skill commit-message
 npx skills add jondotsoy/skills --skill project-roadmap
+npx skills add jondotsoy/skills --skill astro-mcp-integration
 ```
 
 **Using Bun:**
@@ -109,7 +121,6 @@ Each skill includes comprehensive documentation:
 
 - **SKILL.md**: Agent instructions and configuration
 - **README.md**: User documentation and usage examples
-- **AGENTS.md**: Detailed instructions for AI agents (when applicable)
 
 ## 🤝 Contributing
 
