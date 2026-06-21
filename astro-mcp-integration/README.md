@@ -70,8 +70,7 @@ The skill does **not** implement the authorization server — only the protected
 
 ## Documentation
 
-- [SKILL.md](SKILL.md) - Skill definition
-- [AGENTS.md](AGENTS.md) - Detailed agent instructions
+- [SKILL.md](SKILL.md) - Skill definition and complete agent instructions
 
 ## License
 
