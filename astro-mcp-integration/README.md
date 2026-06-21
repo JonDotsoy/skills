@@ -12,6 +12,8 @@ This skill automates the full MCP integration process in an Astro project:
 - Sets up `/.well-known/oauth-protected-resource` for MCP client discovery
 - Configures Bearer token validation (JWT, opaque token introspection, or local table)
 - Updates `astro.config.mjs` with the required `security.checkOrigin: false`
+- Generates a `docs/MCP.md` reference file (path configurable)
+- Saves all MCP definitions to `CLAUDE.md` for persistence across sessions
 
 ## Installation
 
@@ -30,6 +32,7 @@ After installing the skill, describe in natural language what you need:
 - **Tools** — name, what they do, their input parameters
 - **Prompts** — name, description, arguments
 - **Resources** — URI, MIME type, what they return
+- **Docs path** — where to generate the MCP reference file (default: `docs/MCP.md`)
 
 The skill will ask a few OAuth questions (authorization server URL, token validation method, user identifier claim, required scopes) before generating the authentication code.
 
@@ -42,6 +45,7 @@ Integrate an MCP server into my Astro project with:
 - Required scope: `mcp`
 - Auth server: https://auth.myapp.com (JWT tokens, JWKS at /jwks)
 - User claim: `sub`
+- Docs at: docs/api/MCP.md
 ```
 
 ## Generated file structure
@@ -51,6 +55,9 @@ src/
 ├── middleware.ts          # /.well-known/oauth-protected-resource
 └── pages/
     └── mcp.ts             # MCP handler (POST/GET /mcp)
+docs/
+└── MCP.md                 # Developer reference (path configurable)
+CLAUDE.md                  # Updated with MCP definitions for future sessions
 ```
 
 ## Generated endpoints
@@ -60,6 +67,25 @@ src/
 | `POST /mcp` | MCP server — JSON-RPC over HTTP |
 | `GET /mcp` | MCP server — capability discovery |
 | `GET /.well-known/oauth-protected-resource` | OAuth metadata for MCP clients |
+
+## Documentation format
+
+The generated `docs/MCP.md` follows a fixed structure:
+
+- **Introduction** — project name, purpose, base endpoint
+- **Authentication** — Bearer token and query parameter methods in a table; 401 behavior
+- **Types** — field table for the main shared data type (omitted if none)
+- **Tools** — one `###` subsection per tool with parameter table (`Name | Type | Required | Default | Description`) and a JSON response example
+- **Prompts** — one `###` subsection per prompt with argument table and expected behavior
+- **Resources** — one `###` subsection per resource with URI and MIME type
+
+## Token validation options
+
+| Option | How it works |
+|---|---|
+| **A — JWT** | Handler verifies signature locally using the IDP's JWKS endpoint |
+| **B — Introspection** | Handler calls the IDP's introspection endpoint on every request |
+| **C — Local table** | Handler looks up the token in a local DB table (Cloudflare D1 migration included) |
 
 ## Requirements
 
