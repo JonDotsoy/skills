@@ -276,57 +276,93 @@ wrangler d1 migrations apply <DATABASE_NAME>           # production
 Create (or replace) the MCP documentation file. The default path is `docs/MCP.md`; use the
 path the user specified if they provided one. Create parent directories if they don't exist.
 
-The file must document everything a developer needs to understand and connect to the MCP server:
+The file must follow this exact structure and format:
 
 ```markdown
-# MCP Server
+# API MCP
 
-Brief description of what this MCP server exposes.
-
-## Endpoint
-
-`POST /mcp` — JSON-RPC over HTTP (Bearer token required)
+Referencia de las tools disponibles en el servidor MCP de <project name>. Endpoint base: `/mcp`.
 
 ## Authentication
 
-Describe the token validation method (JWT / introspection / local table), the issuer URL,
-required scopes, and where to obtain a token.
+El servidor acepta credenciales por dos vías:
+
+| Method | Format | Example |
+|---|---|---|
+| Bearer token | `Authorization: Bearer <token>` | `Authorization: Bearer eyJ...` |
+| Query parameter | `?token=<token>` | `/mcp?token=eyJ...` |
+
+Ante credenciales inválidas o ausentes el servidor responde `401 Unauthorized` con el header
+`WWW-Authenticate: Bearer realm="<origin>", resource_metadata="<origin>/.well-known/oauth-protected-resource"`.
+
+## Types
+
+### <MainTypeName>
+
+Estructura de datos principal que devuelven las tools (omit this section if the server has no shared data type).
+
+| Field | Type | Description |
+|---|---|---|
+| id | string | Unique identifier |
+| field2 | string | Description |
+| field3 | boolean | Description |
+| ... | ... | ... |
 
 ## Tools
 
 ### tool_name
-Description of what this tool does.
 
-**Input:**
-| Parameter | Type | Description |
-|---|---|---|
-| param | string | What it is |
+Short description of what this tool does.
 
-**Output:** Description of what the tool returns.
+**Parameters:**
 
-(repeat for each tool)
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| param_a | string | Yes | — | What it is |
+| param_b | number | No | 10 | What it controls |
+
+**Response:**
+
+Description of what the tool returns.
+
+```json
+{
+  "field": "example value"
+}
+```
+
+(repeat ### block for each tool)
 
 ## Prompts
 
 ### prompt_name
-Description. Arguments: `arg` — what it means.
 
-(repeat for each prompt)
+Description of what this prompt does and when to use it.
+
+**Arguments:**
+
+| Argument | Type | Required | Description |
+|---|---|---|---|
+| arg_a | string | Yes | What it means |
+
+**Behavior:** Description of what the prompt returns or triggers.
+
+(repeat ### block for each prompt)
 
 ## Resources
 
-### `myapp://resource-uri`
-Description. MIME type: `text/plain`.
+### `scheme://resource-uri`
 
-(repeat for each resource)
+Description of what this resource exposes. MIME type: `text/plain`.
 
-## Integration example
-
-Quick example of calling the MCP server with a Bearer token.
+(repeat ### block for each resource)
 ```
 
 **Important when generating the real file:**
-- Fill every section with the actual tools, prompts, resources, and OAuth details from this session.
+- Use the actual project name in the introduction, not a placeholder.
+- Fill every section with the real tools, prompts, resources, and OAuth details from this session.
+- For each tool, include a realistic minimal JSON example in the response block.
+- Omit sections (Types, Resources, Prompts) if the server has none of that kind.
 - Keep descriptions concise — this file is read by developers, not by the LLM at runtime.
 - If the parent directory does not exist, create it before writing the file.
 
