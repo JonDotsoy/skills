@@ -5,7 +5,7 @@ license: MIT
 metadata:
   author: Jonathan Delgado <hi@jon.soy> (https://jon.soy)
   version: "1.0"
-dependencies: "@modelcontextprotocol/sdk>=1.0.0, zod>=3.0.0"
+compatibility: Requires @modelcontextprotocol/sdk and zod as npm dependencies
 ---
 
 ## Overview
