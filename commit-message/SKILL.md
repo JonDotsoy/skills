@@ -16,7 +16,7 @@ Genera un mensaje de commit siguiendo el estándar **Conventional Commits** para
 ### 1. Obtener el diff staged
 
 ```bash
-git diff --staged
+git --no-pager diff --staged
 ```
 
 Si no hay nada staged, detenerse y avisar al usuario: "No hay cambios en el staging area. Agrega archivos con `git add` primero."
@@ -24,7 +24,7 @@ Si no hay nada staged, detenerse y avisar al usuario: "No hay cambios en el stag
 ### 2. Obtener contexto de commits recientes
 
 ```bash
-git log --format="%s%n%b" -10
+git --no-pager log --format="%s%n%b" -10
 ```
 
 Esto entrega los últimos 10 mensajes (subject + body) para inferir el estilo y vocabulario usados en el proyecto.
