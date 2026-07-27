@@ -36,7 +36,7 @@ Just ask your AI assistant, with a mixed working tree:
 ```
 "sube los cambios por scope"
 "commit these changes, split by scope"
-"separate this into a fix commit and a docs commit and push"
+"separate this into a fix commit and a docs commit"
 ```
 
 ### Prerequisites
