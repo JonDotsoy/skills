@@ -88,6 +88,17 @@ Integrate an MCP server into an existing Astro project — generates the `/mcp` 
 
 [View Documentation →](astro-mcp-integration/README.md)
 
+### ✂️ Scoped Commits
+Split a repo's pending changes (staged, unstaged, and untracked) into cohesive, separately-typed commits, inferring the Conventional Commits `type(scope)` for each group.
+
+**Perfect for:**
+- Splitting a working tree that mixes fixes, features, docs, and config into clean commits
+- Inferring the right Conventional Commits type per group automatically
+- Excluding generated artifacts or possible secrets from commits safely
+- Keeping commit history readable without doing the partitioning by hand
+
+[View Documentation →](scoped-commits/README.md)
+
 ## 🚀 Quick Start
 
 ### Installation
@@ -108,6 +119,7 @@ npx skills add jondotsoy/skills --skill pr-creator
 npx skills add jondotsoy/skills --skill commit-message
 npx skills add jondotsoy/skills --skill project-roadmap
 npx skills add jondotsoy/skills --skill astro-mcp-integration
+npx skills add jondotsoy/skills --skill scoped-commits
 ```
 
 **Using Bun:**
