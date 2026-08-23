@@ -99,6 +99,17 @@ Split a repo's pending changes (staged, unstaged, and untracked) into cohesive, 
 
 [View Documentation →](scoped-commits/README.md)
 
+### 🗒️ Feature Notes
+Maintain a per-branch context sheet (`feature.md`) for the feature currently being worked on — business context and technical constraints, not an implementation plan.
+
+**Perfect for:**
+- Capturing why a feature is being built and for whom, before writing code
+- Keeping technical constraints and decisions visible across a long-running branch
+- Picking up context quickly when returning to a feature branch later
+- Summarizing the work done for a CHANGELOG entry, on request
+
+[View Documentation →](feature-notes/README.md)
+
 ## 🚀 Quick Start
 
 ### Installation
@@ -120,6 +131,7 @@ npx skills add jondotsoy/skills --skill commit-message
 npx skills add jondotsoy/skills --skill project-roadmap
 npx skills add jondotsoy/skills --skill astro-mcp-integration
 npx skills add jondotsoy/skills --skill scoped-commits
+npx skills add jondotsoy/skills --skill feature-notes
 ```
 
 **Using Bun:**

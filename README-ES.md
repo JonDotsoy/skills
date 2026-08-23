@@ -77,6 +77,17 @@ Crea y gestiona un ROADMAP de proyecto a nivel de historia de usuario, rastreand
 
 [Ver Documentación →](project-roadmap/README.md)
 
+### 🗒️ Feature Notes
+Mantiene una ficha de contexto por branch (`feature.md`) para el feature que se está trabajando actualmente — contexto de negocio y restricciones técnicas, no un plan de implementación.
+
+**Perfecto para:**
+- Capturar por qué se construye un feature y para quién, antes de escribir código
+- Mantener visibles las restricciones y decisiones técnicas a lo largo de una branch de larga duración
+- Retomar contexto rápidamente al volver a una branch de feature más tarde
+- Resumir el trabajo hecho para una entrada de CHANGELOG, cuando se pida
+
+[Ver Documentación →](feature-notes/README.md)
+
 ## 🚀 Inicio Rápido
 
 ### Instalación
@@ -96,6 +107,7 @@ npx skills add jondotsoy/skills --skill runbook-executor
 npx skills add jondotsoy/skills --skill pr-creator
 npx skills add jondotsoy/skills --skill commit-message
 npx skills add jondotsoy/skills --skill project-roadmap
+npx skills add jondotsoy/skills --skill feature-notes
 ```
 
 **Usando Bun:**
